@@ -5,10 +5,10 @@ import federation from "@originjs/vite-plugin-federation";
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    port: 5173
+    port: 5174
   },
   plugins: [react(), federation({
-    name: 'vite-react',
+    name: 'vite-react-2',
     filename: 'remoteEntry.js',
     exposes: {
       './Button': {
@@ -16,16 +16,9 @@ export default defineConfig({
         import: './src/shared/Button.tsx'
       }
     },
-    remotes: {
-      'vite-react-2': 'vite-react-2@http://localhost:5174/remoteEntry.js',
+    remotes:{
+      'vite-react': 'vite-react@http://localhost:5173/remoteEntry.js',
     },
-    // remotes: {
-    //   'webpack-side': {
-    //     external: 'http://localhost:5001/remoteEntry.js',
-    //     format: 'esm',
-    //     from: 'webpack',
-    //   },
-    // },
     shared: ['react', 'react-dom']
   })],
   build: {

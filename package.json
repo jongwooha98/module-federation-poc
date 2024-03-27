@@ -4,7 +4,8 @@
   "workspaces": {
     "packages": [
       "cra",
-      "vite-react"
+      "vite-react",
+      "vite-react-2"
     ]
   },
   "devDependencies": {
