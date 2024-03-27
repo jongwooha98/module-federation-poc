@@ -8,13 +8,28 @@ export default defineConfig({
     name: 'vite-react',
     filename: 'remoteEntry.js',
     exposes: {
-      './Button': './src/shared/Button.tsx',
+      './Button': {
+        name: 'Button',
+        import: './src/shared/Button.tsx'
+      }
     },
     // remotes:{
     //     foo: 'remote_foo'
     // },
     shared: ['react', 'react-dom']
   })],
+  build: {
+    target: 'esnext',
+    minify: false,
+    cssCodeSplit: true,
+    rollupOptions: {
+      output: {
+        format: 'esm',
+        entryFileNames: 'assets/[name].js',
+        minifyInternalExports: false,
+      },
+    },
+  },
 })
 
 
